@@ -15,7 +15,7 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(`${process.env.REACT_APP_API_URL}/login`, credentials);
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/login`, credentials);
       alert(response.data.message);
       // Store user token or ID as needed
     } catch (error) {
