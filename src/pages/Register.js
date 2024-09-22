@@ -1,8 +1,8 @@
 // src/Register.js
 import React, { useState } from 'react';
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './Register.css'; // Import the CSS file
+import instance from '../axios-config';
 
 function Register() {
   const [user, setUser] = useState({
@@ -35,7 +35,7 @@ function Register() {
     }
 
     try {
-      const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/users`, formData, {
+      const response = await instance.post(`/api/users`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },

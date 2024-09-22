@@ -1,7 +1,7 @@
 // src/UserList.js
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import './UserList.css'; // Import the CSS file
+import instance from '../axios-config';
 
 function UserList() {
   const [users, setUsers] = useState([]);
@@ -9,7 +9,7 @@ function UserList() {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/users`);
+        const response = await instance.get(`/api/users`);
         setUsers(response.data);
       } catch (error) {
         console.error('Error fetching users:', error);

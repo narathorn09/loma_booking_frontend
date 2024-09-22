@@ -1,6 +1,6 @@
 // src/Login.js
 import React, { useState } from 'react';
-import axios from 'axios';
+import instance from '../axios-config';
 
 function Login() {
   const [credentials, setCredentials] = useState({
@@ -15,7 +15,7 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/login`, credentials);
+      const response = await instance.post(`/api/login`, credentials);
       alert(response.data.message);
       // Store user token or ID as needed
     } catch (error) {
