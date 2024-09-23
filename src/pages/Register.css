@@ -1,61 +1,75 @@
-/* src/Register.css */
-
 .register {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    background-color: #fafafa;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #fafafa;
+  background: linear-gradient(-45deg, #23a6d5, #23d5ab, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+  height: 100vh;
+}
+
+.register form {
+  background-color: rgb(255, 255, 255);
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 350px;
+  z-index: 10;
+}
+
+.register h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+  text-align: center;
+}
+
+.register input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #dbdbdb;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.register input:focus {
+  border-color: #0095f6;
+  outline: none;
+}
+
+.register button {
+  width: 100%;
+  padding: 10px;
+  background-color: #0095f6;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.register button:hover {
+  background-color: #007bbf;
+}
+
+.register .file-input {
+  margin-bottom: 10px;
+  padding: 5px;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
   }
-  
-  .register form {
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    width: 350px;
+  50% {
+    background-position: 100% 50%;
   }
-  
-  .register h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
-    color: #333;
-    text-align: center;
+  100% {
+    background-position: 0% 50%;
   }
-  
-  .register input {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #dbdbdb;
-    border-radius: 4px;
-    font-size: 14px;
-  }
-  
-  .register input:focus {
-    border-color: #0095f6;
-    outline: none;
-  }
-  
-  .register button {
-    width: 100%;
-    padding: 10px;
-    background-color: #0095f6;
-    border: none;
-    border-radius: 4px;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .register button:hover {
-    background-color: #007bbf;
-  }
-  
-  .register .file-input {
-    margin-bottom: 10px;
-    padding: 5px;
-  }
-  
+}

@@ -1,14 +1,14 @@
 // src/Register.js
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import './Register.css'; // Import the CSS file
-import instance from '../axios-config';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import "./Register.css"; // Import the CSS file
+import instance from "../axios-config";
 
 function Register() {
   const [user, setUser] = useState({
-    username: '',
-    email: '',
-    password_hash: '',
+    username: "",
+    email: "",
+    password_hash: "",
     verified_email: false,
   });
   const [image, setImage] = useState(null);
@@ -26,28 +26,28 @@ function Register() {
     e.preventDefault();
 
     const formData = new FormData();
-    formData.append('username', user.username);
-    formData.append('email', user.email);
-    formData.append('password_hash', user.password_hash);
-    formData.append('verified_email', user.verified_email);
+    formData.append("username", user.username);
+    formData.append("email", user.email);
+    formData.append("password_hash", user.password_hash);
+    formData.append("verified_email", user.verified_email);
     if (image) {
-      formData.append('image', image);
+      formData.append("image", image);
     }
 
     try {
       const response = await instance.post(`/api/users`, formData, {
         headers: {
-          'Content-Type': 'multipart/form-data',
+          "Content-Type": "multipart/form-data",
         },
       });
       alert(response.data.message);
-      navigate('/users');
+      navigate("/users");
     } catch (error) {
       if (error.response && error.response.status === 409) {
-        alert('User already exists. Please try a different email or username.');
+        alert("User already exists. Please try a different email or username.");
       } else {
-        console.error('Error registering user:', error);
-        alert('An error occurred during registration. Please try again.');
+        console.error("Error registering user:", error);
+        alert("An error occurred during registration. Please try again.");
       }
     }
   };
@@ -56,10 +56,34 @@ function Register() {
     <div className="register">
       <form onSubmit={handleSubmit}>
         <h2>Register</h2>
-        <input type="text" name="username" placeholder="Username" onChange={handleChange} required />
-        <input type="email" name="email" placeholder="Email" onChange={handleChange} required />
-        <input type="password" name="password_hash" placeholder="Password" onChange={handleChange} required />
-        <input type="file" onChange={handleImageChange} accept="image/*" required className="file-input" />
+        <input
+          type="text"
+          name="username"
+          placeholder="Username"
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="email"
+          name="email"
+          placeholder="Email"
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="password"
+          name="password_hash"
+          placeholder="Password"
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="file"
+          onChange={handleImageChange}
+          accept="image/*"
+          required
+          className="file-input"
+        />
         <button type="submit">Register</button>
       </form>
     </div>
